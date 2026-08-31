@@ -13,9 +13,11 @@ We are building a collaborative Android-first custom volume-control application.
 ## Repository Workflow
 This repository follows a strict GitHub Flow-inspired branch-based collaboration workflow, preserving our `main → dev → feature/*` architecture.
 
-Two developers will work independently on separate feature branches without mixing unrelated changes. For example:
-- Developer A: `feature/android-volume`
-- Developer B: `feature/volume-overlay`
+**Important Principle: ONE FEATURE / TASK = ONE WORK BRANCH**
+Feature branches are NOT permanently assigned to specific developers. Both developers are allowed to work on any feature depending on their current task. For example, either developer may work on `feature/android-volume` or `feature/volume-overlay`.
+
+**Simultaneous Work:**
+If both developers need to work on the same broad feature simultaneously, create more specific task branches instead of editing the exact same branch (e.g., `feature/android-volume-detection` and `feature/android-volume-service`). This minimizes conflicts. Coordinate first if both developers intentionally need to modify the same branch.
 
 ### Branches
 ```text
@@ -36,13 +38,13 @@ git pull origin dev
 ```
 **Important Clarification:** Do NOT routinely run `git pull origin main` while working on feature branches. Our project uses `dev` as the integration branch, so the normal synchronization target is `origin dev`. This prevents unfinished or unrelated work from being mixed into active development.
 
-Then create or switch to your assigned feature branch:
+Then create or switch to your task-specific branch:
 ```bash
-git checkout -b feature/my-feature
+git checkout -b feature/description-of-task
 ```
 
 ### Development
-Work only on your assigned feature branch. Commit focused changes:
+Work only on your task-specific branch. Commit focused changes:
 ```bash
 git add .
 git commit -m "feat: description of change"
