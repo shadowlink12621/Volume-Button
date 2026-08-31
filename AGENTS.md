@@ -24,16 +24,26 @@
 * Before modifying shared architecture, inspect current work and communicate the impact.
 
 ### Changelog
-* Update `CHANGELOG.md` for meaningful feature/fix changes.
+* Keep `CHANGELOG.md` updated whenever a meaningful feature/fix is merged into `dev`.
+* Record the following details for each entry:
+  - Date
+  - Branch
+  - Developer
+  - Change
+  - Testing status
 * Do not fabricate changelog entries.
 * Record what actually changed.
 * Record testing results when available.
 
 ### Git
-* Never force push.
+* Never force push shared branches.
 * Never rewrite shared history.
 * Never reset another developer's work.
 * Never delete another developer's branch.
-* Never push to `main` directly.
+* No direct pushes to `main`.
+* Feature branches require Pull Requests.
+* At least one developer should review the other developer's feature before merging into `dev`.
+* `dev` must be tested before merging into `main`.
 * Never automatically merge pull requests.
-* Never automatically resolve conflicts without inspection.
+* Never blindly resolve merge conflicts.
+* Keep feature branches focused on one feature.

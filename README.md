@@ -11,13 +11,11 @@ We are building a collaborative Android-first custom volume-control application.
 - **Architecture:** MVVM (UI -> ViewModel -> VolumeController abstraction -> AudioManager implementation)
 
 ## Repository Workflow
-This repository follows a strict branch-based collaboration workflow.
+This repository follows a strict GitHub Flow-inspired branch-based collaboration workflow, preserving our `main → dev → feature/*` architecture.
 
 Two developers will work independently on separate feature branches without mixing unrelated changes. For example:
 - Developer A: `feature/android-volume`
 - Developer B: `feature/volume-overlay`
-
-When a feature is complete, it will be merged into `dev` via a Pull Request. After `dev` has been tested and is stable, it will be merged into `main`.
 
 ### Branches
 ```text
@@ -30,27 +28,56 @@ main
     └── feature/ios
 ```
 
-### Starting Work
-A developer should do:
+### Daily Workflow
+Before starting work, sync your local integration branch:
 ```bash
 git checkout dev
 git pull origin dev
+```
+**Important Clarification:** Do NOT routinely run `git pull origin main` while working on feature branches. Our project uses `dev` as the integration branch, so the normal synchronization target is `origin dev`. This prevents unfinished or unrelated work from being mixed into active development.
+
+Then create or switch to your assigned feature branch:
+```bash
 git checkout -b feature/my-feature
 ```
 
-### Before Finishing
+### Development
+Work only on your assigned feature branch. Commit focused changes:
 ```bash
-git status
 git add .
-git commit -m "feat: description"
+git commit -m "feat: description of change"
+```
+
+### Push
+Push your feature branch to the remote repository:
+```bash
 git push -u origin feature/my-feature
 ```
-Then create a Pull Request into `dev`.
 
-### Important
-* Never directly push feature work to `main`.
-* Never force-push.
-* Never rewrite shared history.
+### Pull Request & Review Rules
+Create a Pull Request to merge your feature into `dev`:
+```text
+feature/my-feature
+        ↓
+       dev
+```
+- **No direct pushes to `main`.**
+- Feature branches require Pull Requests.
+- At least one developer should review the other developer's feature before merging into `dev`.
+- Keep feature branches focused on one feature.
+- Never force-push shared branches.
+- Never rewrite shared history.
+- Never blindly resolve merge conflicts.
+
+### Integration
+After review and approval, merge the feature into `dev`. The `dev` branch is where both developers' completed features are integrated and tested.
+
+Only after `dev` is tested and completely stable should it be merged into `main`:
+```text
+dev
+ ↓
+main
+```
 
 ### Commit Convention
 Use conventional commit-style messages:
